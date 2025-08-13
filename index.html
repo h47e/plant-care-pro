@@ -881,6 +881,36 @@
                                             <input id="settings-telegram-daily-time" type="time" value="09:00" class="bg-gray-700 text-white p-2 rounded text-sm">
                                         </div>
                                     </div>
+
+                                    <div class="border-t border-gray-600 pt-3">
+                                        <label class="flex items-center gap-3 cursor-pointer mb-3">
+                                            <input id="settings-telegram-auto-backup" type="checkbox" class="w-4 h-4 text-primary bg-gray-700 border-gray-600 rounded focus:ring-primary focus:ring-2">
+                                            <div>
+                                                <div class="text-sm font-medium">Автоматический бэкап</div>
+                                                <div class="text-xs text-gray-400">Регулярная отправка бэкапа данных в чат</div>
+                                            </div>
+                                        </label>
+
+                                        <div id="telegram-backup-settings" class="ml-7 hidden space-y-3">
+                                            <div class="grid grid-cols-2 gap-3">
+                                                <div>
+                                                    <label class="block text-xs text-gray-400 mb-1">Частота</label>
+                                                    <select id="settings-telegram-backup-frequency" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
+                                                        <option value="daily">Ежедневно</option>
+                                                        <option value="weekly" selected>Еженедельно</option>
+                                                        <option value="monthly">Ежемесячно</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-xs text-gray-400 mb-1">Время</label>
+                                                    <input id="settings-telegram-backup-time" type="time" value="20:00" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
+                                                </div>
+                                            </div>
+                                            <div class="text-xs text-gray-500">
+                                                Последний бэкап в Telegram: <span id="last-telegram-backup-time">никогда</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -909,7 +939,7 @@
                         <!-- Export Options -->
                         <div class="bg-gray-800 p-4 rounded-lg">
                             <h4 class="font-medium text-white mb-3">📤 Экспорт и бэкап</h4>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
                                 <button type="button" id="export-data-btn" class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-left">
                                     <div class="flex items-center gap-3 mb-1">
                                         <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -928,16 +958,6 @@
                                         <span class="font-medium text-sm">Бэкап в папку</span>
                                     </div>
                                     <div class="text-xs text-gray-400">Сохранить в локальную папку</div>
-                                </button>
-
-                                <button type="button" id="backup-to-config-btn" class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-left">
-                                    <div class="flex items-center gap-3 mb-1">
-                                        <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                        </svg>
-                                        <span class="font-medium text-sm">Config.txt в корень</span>
-                                    </div>
-                                    <div class="text-xs text-gray-400">Сохранить на сервер</div>
                                 </button>
                             </div>
 
@@ -985,7 +1005,7 @@
                         <!-- Import Options -->
                         <div class="bg-gray-800 p-4 rounded-lg">
                             <h4 class="font-medium text-white mb-3">📥 Импорт данных</h4>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <button type="button" id="import-data-btn" class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-left">
                                     <div class="flex items-center gap-3 mb-1">
                                         <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1004,16 +1024,6 @@
                                         <span class="font-medium text-sm">Восстановить из папки</span>
                                     </div>
                                     <div class="text-xs text-gray-400">Выбрать бэкап из папки</div>
-                                </button>
-
-                                <button type="button" id="restore-from-config-btn" class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-left">
-                                    <div class="flex items-center gap-3 mb-1">
-                                        <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                        </svg>
-                                        <span class="font-medium text-sm">Из config.txt</span>
-                                    </div>
-                                    <div class="text-xs text-gray-400">Загрузить с сервера</div>
                                 </button>
                             </div>
                         </div>
@@ -1715,6 +1725,7 @@
                 // Telegram integration
                 document.getElementById('settings-telegram-enabled').addEventListener('change', (e) => this.toggleTelegramSettings(e.target.checked));
                 document.getElementById('settings-telegram-daily-summary').addEventListener('change', (e) => this.toggleDailySummaryTime(e.target.checked));
+                document.getElementById('settings-telegram-auto-backup').addEventListener('change', (e) => this.toggleTelegramBackupSettings(e.target.checked));
                 document.getElementById('test-telegram-connection').addEventListener('click', () => this.testTelegramConnection());
                 document.getElementById('get-telegram-chat-id').addEventListener('click', () => this.getTelegramChatId());
                 document.getElementById('send-plant-status').addEventListener('click', () => this.sendPlantStatusToTelegram());
@@ -5043,9 +5054,24 @@ ${this.shouldShowFeedingReminder(date, plant, phase) ? '🌿 Рекоменду�
                 document.getElementById('settings-telegram-daily-summary').checked = notifications.dailySummary || false;
                 document.getElementById('settings-telegram-daily-time').value = notifications.dailyTime || '09:00';
                 
+                // Telegram backup settings
+                document.getElementById('settings-telegram-auto-backup').checked = telegramSettings.autoBackup || false;
+                document.getElementById('settings-telegram-backup-frequency').value = telegramSettings.backupFrequency || 'weekly';
+                document.getElementById('settings-telegram-backup-time').value = telegramSettings.backupTime || '20:00';
+                
+                // Show last Telegram backup time
+                if (telegramSettings.lastBackupTime) {
+                    const lastBackup = new Date(telegramSettings.lastBackupTime);
+                    const lastBackupElement = document.getElementById('last-telegram-backup-time');
+                    if (lastBackupElement) {
+                        lastBackupElement.textContent = lastBackup.toLocaleString('ru-RU');
+                    }
+                }
+                
                 // Show/hide Telegram settings
                 this.toggleTelegramSettings(telegramSettings.enabled || false);
                 this.toggleDailySummaryTime(notifications.dailySummary || false);
+                this.toggleTelegramBackupSettings(telegramSettings.autoBackup || false);
 
                 // Backup settings
                 const backupSettings = this.data.settings.backup || {};
@@ -5198,7 +5224,11 @@ ${this.shouldShowFeedingReminder(date, plant, phase) ? '🌿 Рекоменду�
                         dailySummary: document.getElementById('settings-telegram-daily-summary').checked,
                         dailyTime: document.getElementById('settings-telegram-daily-time').value || '09:00'
                     },
-                    lastDailySummary: this.data.settings.telegram?.lastDailySummary || null
+                    autoBackup: document.getElementById('settings-telegram-auto-backup').checked,
+                    backupFrequency: document.getElementById('settings-telegram-backup-frequency').value || 'weekly',
+                    backupTime: document.getElementById('settings-telegram-backup-time').value || '20:00',
+                    lastDailySummary: this.data.settings.telegram?.lastDailySummary || null,
+                    lastBackupTime: this.data.settings.telegram?.lastBackupTime || null
                 };
 
                 // Save backup settings
@@ -5223,6 +5253,11 @@ ${this.shouldShowFeedingReminder(date, plant, phase) ? '🌿 Рекоменду�
                 // Setup Telegram notifications if enabled
                 if (this.data.settings.telegram.enabled) {
                     this.setupTelegramNotifications();
+                    
+                    // Setup Telegram backup if enabled
+                    if (this.data.settings.telegram.autoBackup) {
+                        this.setupTelegramBackupSchedule();
+                    }
                 }
                 
                 // Show success message
@@ -6519,6 +6554,120 @@ ${this.shouldShowFeedingReminder(date, plant, phase) ? '🌿 Рекоменду�
                     timeInput.classList.remove('hidden');
                 } else {
                     timeInput.classList.add('hidden');
+                }
+            }
+
+            toggleTelegramBackupSettings(enabled) {
+                const settings = document.getElementById('telegram-backup-settings');
+                if (enabled) {
+                    settings.classList.remove('hidden');
+                    this.setupTelegramBackupSchedule();
+                } else {
+                    settings.classList.add('hidden');
+                    if (this.telegramBackupTimer) {
+                        clearInterval(this.telegramBackupTimer);
+                        this.telegramBackupTimer = null;
+                    }
+                }
+            }
+
+            setupTelegramBackupSchedule() {
+                const telegramSettings = this.data.settings.telegram;
+                
+                if (!telegramSettings.enabled || !telegramSettings.autoBackup) {
+                    return;
+                }
+
+                // Clear existing timer
+                if (this.telegramBackupTimer) {
+                    clearInterval(this.telegramBackupTimer);
+                }
+
+                // Check every minute for backup time
+                this.telegramBackupTimer = setInterval(() => {
+                    const now = new Date();
+                    const currentTime = now.toTimeString().slice(0, 5); // HH:MM
+                    const backupTime = telegramSettings.backupTime || '20:00';
+                    
+                    if (currentTime === backupTime && this.shouldSendTelegramBackup()) {
+                        this.sendBackupToTelegram();
+                    }
+                }, 60000); // Check every minute
+            }
+
+            shouldSendTelegramBackup() {
+                const telegramSettings = this.data.settings.telegram;
+                const frequency = telegramSettings.backupFrequency || 'weekly';
+                const lastBackup = telegramSettings.lastBackupTime ? new Date(telegramSettings.lastBackupTime) : new Date(0);
+                const now = new Date();
+                
+                let interval;
+                switch (frequency) {
+                    case 'daily':
+                        interval = 24 * 60 * 60 * 1000; // 1 day
+                        break;
+                    case 'weekly':
+                        interval = 7 * 24 * 60 * 60 * 1000; // 7 days
+                        break;
+                    case 'monthly':
+                        interval = 30 * 24 * 60 * 60 * 1000; // 30 days
+                        break;
+                    default:
+                        interval = 7 * 24 * 60 * 60 * 1000; // Default weekly
+                }
+                
+                return (now - lastBackup) >= interval;
+            }
+
+            async sendBackupToTelegram() {
+                try {
+                    const timestamp = new Date().toLocaleDateString('ru-RU', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+
+                    const plantsCount = this.data.plants.length;
+                    const wateringsCount = this.data.waterings.length;
+
+                    // Create backup data
+                    const backupData = JSON.stringify(this.data, null, 2);
+                    const backupSize = (new Blob([backupData]).size / 1024).toFixed(1);
+
+                    const message = `🗄️ <b>Автоматический бэкап Plant Care Pro</b>\n\n` +
+                        `📅 Дата: ${timestamp}\n` +
+                        `🌱 Растений: ${plantsCount}\n` +
+                        `💧 Записей поливов: ${wateringsCount}\n` +
+                        `📊 Размер: ${backupSize} КБ\n\n` +
+                        `<code>${backupData}</code>`;
+
+                    const success = await this.sendTelegramMessage(message);
+                    
+                    if (success) {
+                        // Update last backup time
+                        if (!this.data.settings.telegram) {
+                            this.data.settings.telegram = {};
+                        }
+                        this.data.settings.telegram.lastBackupTime = new Date().toISOString();
+                        this.saveData();
+                        
+                        // Update UI
+                        const lastBackupElement = document.getElementById('last-telegram-backup-time');
+                        if (lastBackupElement) {
+                            lastBackupElement.textContent = timestamp;
+                        }
+                        
+                        console.log('Backup sent to Telegram successfully');
+                        this.showNotification('✅ Бэкап отправлен в Telegram', 'success');
+                    } else {
+                        throw new Error('Failed to send message to Telegram');
+                    }
+                    
+                } catch (error) {
+                    console.error('Error sending backup to Telegram:', error);
+                    this.showNotification('❌ Ошибка отправки бэкапа в Telegram', 'error');
                 }
             }
 
