@@ -1,0 +1,81 @@
+<h1>Logs</h1>
+<p>logs
+<em>.log
+npm-debug.log</em>
+yarn-debug.log*
+yarn-error.log*</p>
+<h1>Runtime data</h1>
+<p>pids
+*.pid
+*.seed
+*.pid.lock</p>
+<h1>Coverage directory used by tools like istanbul</h1>
+<p>coverage/
+*.lcov</p>
+<h1>nyc test coverage</h1>
+<p>.nyc_output</p>
+<h1>Dependency directories</h1>
+<p>node_modules/
+jspm_packages/</p>
+<h1>Optional npm cache directory</h1>
+<p>.npm</p>
+<h1>Optional eslint cache</h1>
+<p>.eslintcache</p>
+<h1>Microbundle cache</h1>
+<p>.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/</p>
+<h1>Optional REPL history</h1>
+<p>.node_repl_history</p>
+<h1>Output of 'npm pack'</h1>
+<p>*.tgz</p>
+<h1>Yarn Integrity file</h1>
+<p>.yarn-integrity</p>
+<h1>dotenv environment variables file</h1>
+<p>.env
+.env.test
+.env.production
+.env.local</p>
+<h1>parcel-bundler cache (<a href="https://parceljs.org/">https://parceljs.org/</a>)</h1>
+<p>.cache
+.parcel-cache</p>
+<h1>next.js build output</h1>
+<p>.next</p>
+<h1>nuxt.js build output</h1>
+<p>.nuxt</p>
+<h1>gatsby files</h1>
+<p>.cache/
+public</p>
+<h1>Storybook build outputs</h1>
+<p>.out
+.storybook-out</p>
+<h1>Temporary folders</h1>
+<p>tmp/
+temp/</p>
+<h1>Editor directories and files</h1>
+<p>.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+*.swp
+*.swo
+*~</p>
+<h1>OS generated files</h1>
+<p>.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db</p>
+<h1>Build outputs</h1>
+<p>dist/
+build/
+*.tsbuildinfo</p>
+<h1>Local development</h1>
+<p>.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local</p>
