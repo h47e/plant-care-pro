@@ -22,31 +22,32 @@
         }
     </script>
 </head>
-<body class="bg-darker text-white font-['Inter']">
-    <!-- Header -->
-    <header class="bg-dark border-b border-gray-700 px-6 py-4 flex items-center justify-between">
-        <h1 class="text-lg font-bold text-primary">Plant Care Pro</h1>
-        <div class="flex items-center gap-4">
-            <button id="settings-btn" class="p-2 hover:bg-gray-700 rounded-lg transition-colors" title="Настройки">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-            </button>
-        </div>
-    </header>
+<body class="bg-darker text-white font-['Inter'] h-screen overflow-hidden">
+    <div class="flex flex-col h-full">
+        <!-- Header -->
+        <header class="bg-dark border-b border-gray-700 px-6 py-4 flex items-center justify-between flex-shrink-0">
+            <h1 class="text-xl font-bold text-primary">Plant Care Pro</h1>
+            <div class="flex items-center gap-4">
+                <button id="settings-btn" class="p-2 hover:bg-gray-700 rounded-lg transition-colors" title="Настройки">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
 
-    <!-- Mobile menu button -->
-    <button id="mobile-menu-btn" class="fixed top-4 left-4 z-50 lg:hidden p-2 bg-dark border border-gray-600 rounded-lg shadow-lg">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-    </button>
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn" class="fixed top-4 left-4 z-50 lg:hidden p-2 bg-dark border border-gray-600 rounded-lg shadow-lg">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
 
-    <!-- Mobile overlay -->
-    <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden hidden"></div>
+        <!-- Mobile overlay -->
+        <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden hidden"></div>
 
-    <div class="flex h-screen max-w-7xl mx-auto">
+        <div class="flex flex-1 overflow-hidden max-w-7xl mx-auto w-full">
         <!-- Sidebar -->
         <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-40 w-80 bg-dark border-r border-gray-700 flex flex-col overflow-y-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
             <!-- My Plants Section -->
@@ -880,36 +881,6 @@
                                             <input id="settings-telegram-daily-time" type="time" value="09:00" class="bg-gray-700 text-white p-2 rounded text-sm">
                                         </div>
                                     </div>
-
-                                    <div class="border-t border-gray-600 pt-3">
-                                        <label class="flex items-center gap-3 cursor-pointer mb-3">
-                                            <input id="settings-telegram-auto-backup" type="checkbox" class="w-4 h-4 text-primary bg-gray-700 border-gray-600 rounded focus:ring-primary focus:ring-2">
-                                            <div>
-                                                <div class="text-sm font-medium">Автоматический бэкап</div>
-                                                <div class="text-xs text-gray-400">Регулярная отправка резервных копий в Telegram</div>
-                                            </div>
-                                        </label>
-
-                                        <div id="auto-backup-time" class="ml-7 hidden space-y-3">
-                                            <div class="grid grid-cols-2 gap-3">
-                                                <div>
-                                                    <label class="block text-xs text-gray-400 mb-1">Частота</label>
-                                                    <select id="settings-telegram-backup-frequency" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
-                                                        <option value="daily">Ежедневно</option>
-                                                        <option value="weekly" selected>Еженедельно</option>
-                                                        <option value="monthly">Ежемесячно</option>
-                                                    </select>
-                                                </div>
-                                                <div>
-                                                    <label class="block text-xs text-gray-400 mb-1">Время отправки</label>
-                                                    <input id="settings-telegram-backup-time" type="time" value="02:00" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
-                                                </div>
-                                            </div>
-                                            <div class="text-xs text-gray-500">
-                                                Последний бэкап: <span id="last-telegram-backup-time">никогда</span>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
@@ -938,7 +909,7 @@
                         <!-- Export Options -->
                         <div class="bg-gray-800 p-4 rounded-lg">
                             <h4 class="font-medium text-white mb-3">📤 Экспорт и бэкап</h4>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
                                 <button type="button" id="export-data-btn" class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-left">
                                     <div class="flex items-center gap-3 mb-1">
                                         <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -957,6 +928,16 @@
                                         <span class="font-medium text-sm">Бэкап в папку</span>
                                     </div>
                                     <div class="text-xs text-gray-400">Сохранить в локальную папку</div>
+                                </button>
+
+                                <button type="button" id="backup-to-config-btn" class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-left">
+                                    <div class="flex items-center gap-3 mb-1">
+                                        <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                        </svg>
+                                        <span class="font-medium text-sm">Config.txt в корень</span>
+                                    </div>
+                                    <div class="text-xs text-gray-400">Сохранить на сервер</div>
                                 </button>
                             </div>
 
@@ -1004,7 +985,7 @@
                         <!-- Import Options -->
                         <div class="bg-gray-800 p-4 rounded-lg">
                             <h4 class="font-medium text-white mb-3">📥 Импорт данных</h4>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                                 <button type="button" id="import-data-btn" class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-left">
                                     <div class="flex items-center gap-3 mb-1">
                                         <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1023,6 +1004,16 @@
                                         <span class="font-medium text-sm">Восстановить из папки</span>
                                     </div>
                                     <div class="text-xs text-gray-400">Выбрать бэкап из папки</div>
+                                </button>
+
+                                <button type="button" id="restore-from-config-btn" class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-left">
+                                    <div class="flex items-center gap-3 mb-1">
+                                        <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                        </svg>
+                                        <span class="font-medium text-sm">Из config.txt</span>
+                                    </div>
+                                    <div class="text-xs text-gray-400">Загрузить с сервера</div>
                                 </button>
                             </div>
                         </div>
@@ -1200,12 +1191,6 @@
                             phaseChanges: true,
                             dailySummary: false,
                             dailyTime: '09:00'
-                        },
-                        autoBackup: {
-                            enabled: false,
-                            frequency: 'weekly',
-                            time: '02:00',
-                            lastBackup: null
                         },
                         lastDailySummary: null
                     };
@@ -1730,7 +1715,6 @@
                 // Telegram integration
                 document.getElementById('settings-telegram-enabled').addEventListener('change', (e) => this.toggleTelegramSettings(e.target.checked));
                 document.getElementById('settings-telegram-daily-summary').addEventListener('change', (e) => this.toggleDailySummaryTime(e.target.checked));
-                document.getElementById('settings-telegram-auto-backup').addEventListener('change', (e) => this.toggleAutoBackupTime(e.target.checked));
                 document.getElementById('test-telegram-connection').addEventListener('click', () => this.testTelegramConnection());
                 document.getElementById('get-telegram-chat-id').addEventListener('click', () => this.getTelegramChatId());
                 document.getElementById('send-plant-status').addEventListener('click', () => this.sendPlantStatusToTelegram());
@@ -1739,6 +1723,19 @@
                 document.getElementById('export-data-btn').addEventListener('click', () => this.exportData());
                 document.getElementById('backup-to-folder-btn').addEventListener('click', () => this.backupToFolder());
                 document.getElementById('import-data-btn').addEventListener('click', () => this.importData());
+                
+                // Add config.txt handlers with delay to ensure elements exist
+                setTimeout(() => {
+                    const backupToConfigBtn = document.getElementById('backup-to-config-btn');
+                    const restoreFromConfigBtn = document.getElementById('restore-from-config-btn');
+                    
+                    if (backupToConfigBtn) {
+                        backupToConfigBtn.addEventListener('click', () => this.backupToConfigFile());
+                    }
+                    if (restoreFromConfigBtn) {
+                        restoreFromConfigBtn.addEventListener('click', () => this.restoreFromConfigFile());
+                    }
+                }, 100);
                 document.getElementById('restore-from-folder-btn').addEventListener('click', () => this.restoreFromFolder());
                 document.getElementById('data-import-input').addEventListener('change', (e) => this.handleDataImport(e));
                 document.getElementById('settings-auto-backup').addEventListener('change', (e) => this.toggleAutoBackupSettings(e.target.checked));
@@ -5046,22 +5043,9 @@ ${this.shouldShowFeedingReminder(date, plant, phase) ? '🌿 Рекоменду�
                 document.getElementById('settings-telegram-daily-summary').checked = notifications.dailySummary || false;
                 document.getElementById('settings-telegram-daily-time').value = notifications.dailyTime || '09:00';
                 
-                // Telegram auto backup settings
-                const autoBackup = telegramSettings.autoBackup || {};
-                document.getElementById('settings-telegram-auto-backup').checked = autoBackup.enabled || false;
-                document.getElementById('settings-telegram-backup-frequency').value = autoBackup.frequency || 'weekly';
-                document.getElementById('settings-telegram-backup-time').value = autoBackup.time || '02:00';
-                
-                // Show last backup time if available
-                if (autoBackup.lastBackup) {
-                    const lastBackup = new Date(autoBackup.lastBackup);
-                    document.getElementById('last-telegram-backup-time').textContent = lastBackup.toLocaleString('ru-RU');
-                }
-                
                 // Show/hide Telegram settings
                 this.toggleTelegramSettings(telegramSettings.enabled || false);
                 this.toggleDailySummaryTime(notifications.dailySummary || false);
-                this.toggleAutoBackupTime(autoBackup.enabled || false);
 
                 // Backup settings
                 const backupSettings = this.data.settings.backup || {};
@@ -5214,12 +5198,6 @@ ${this.shouldShowFeedingReminder(date, plant, phase) ? '🌿 Рекоменду�
                         dailySummary: document.getElementById('settings-telegram-daily-summary').checked,
                         dailyTime: document.getElementById('settings-telegram-daily-time').value || '09:00'
                     },
-                    autoBackup: {
-                        enabled: document.getElementById('settings-telegram-auto-backup').checked,
-                        frequency: document.getElementById('settings-telegram-backup-frequency').value || 'weekly',
-                        time: document.getElementById('settings-telegram-backup-time').value || '02:00',
-                        lastBackup: this.data.settings.telegram?.autoBackup?.lastBackup || null
-                    },
                     lastDailySummary: this.data.settings.telegram?.lastDailySummary || null
                 };
 
@@ -5288,9 +5266,239 @@ ${this.shouldShowFeedingReminder(date, plant, phase) ? '🌿 Рекоменду�
                 }
             }
 
+            async backupToConfigFile() {
+                try {
+                    // Generate config content
+                    const configContent = this.generateConfigContent();
 
+                    // Save config.txt to the server/website storage
+                    const response = await fetch('/api/save-config', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            filename: 'config.txt',
+                            content: configContent,
+                            timestamp: new Date().toISOString()
+                        })
+                    });
 
+                    if (response.ok) {
+                        const result = await response.json();
+                        this.showNotification('✅ Config.txt сохранен на сервере', 'success');
+                        
+                        // Update last backup time
+                        this.data.settings.backup = this.data.settings.backup || {};
+                        this.data.settings.backup.lastConfigBackup = new Date().toISOString();
+                        this.saveData();
+                    } else {
+                        throw new Error(`Server error: ${response.status} ${response.statusText}`);
+                    }
 
+                } catch (error) {
+                    console.error('Error saving config to server:', error);
+                    
+                    // Fallback to localStorage if server not available
+                    try {
+                        const configContent = this.generateConfigContent();
+                        localStorage.setItem('plant-care-config-backup', configContent);
+                        localStorage.setItem('plant-care-config-backup-time', new Date().toISOString());
+                        
+                        this.showNotification('⚠️ Сохранено локально (сервер недоступен)', 'warning');
+                    } catch (fallbackError) {
+                        console.error('Fallback error:', fallbackError);
+                        this.showNotification('❌ Ошибка сохранения config.txt', 'error');
+                    }
+                }
+            }
+
+            generateConfigContent() {
+                const now = new Date();
+                const plants = Object.values(this.data.plants);
+                const recipes = Object.values(this.data.recipes);
+                const fertilizers = Object.values(this.data.fertilizers);
+                
+                let config = '';
+                config += '# =============================================================================\n';
+                config += '#                           PLANT CARE PRO CONFIG\n';
+                config += '# =============================================================================\n';
+                config += `# Создано: ${now.toLocaleString('ru-RU')}\n`;
+                config += `# Версия: 1.0.0 Final\n`;
+                config += `# Всего растений: ${plants.length}\n`;
+                config += `# Всего удобрений: ${fertilizers.length}\n`;
+                config += `# Всего рецептов: ${recipes.length}\n`;
+                config += '# =============================================================================\n\n';
+
+                // App Settings
+                config += '# --- НАСТРОЙКИ ПРИЛОЖЕНИЯ ---\n';
+                config += `APP_TITLE=${this.data.settings.appTitle || 'Plant Care Pro'}\n`;
+                config += `CURRENT_DATE=${this.data.settings.currentDate.toISOString().split('T')[0]}\n`;
+                config += `SELECTED_PLANT=${this.data.settings.selectedPlant || ''}\n\n`;
+
+                // Home Assistant Integration
+                if (this.data.settings.homeAssistant) {
+                    config += '# --- HOME ASSISTANT ИНТЕГРАЦИЯ ---\n';
+                    config += `HA_ENABLED=${this.data.settings.homeAssistant.enabled}\n`;
+                    config += `HA_URL=${this.data.settings.homeAssistant.url || ''}\n`;
+                    config += `HA_TOKEN=${this.data.settings.homeAssistant.accessToken ? '[СКРЫТО]' : ''}\n`;
+                    config += `HA_PREFIX=${this.data.settings.homeAssistant.entityPrefix || 'plant_care'}\n\n`;
+                }
+
+                // Backup Settings
+                if (this.data.settings.backup) {
+                    config += '# --- НАСТРОЙКИ БЭКАПА ---\n';
+                    config += `BACKUP_AUTO_ENABLED=${this.data.settings.backup.autoEnabled || false}\n`;
+                    config += `BACKUP_FREQUENCY=${this.data.settings.backup.frequency || 'weekly'}\n`;
+                    config += `BACKUP_KEEP_FILES=${this.data.settings.backup.keepFiles || 10}\n`;
+                    config += `BACKUP_FOLDER=${this.data.settings.backup.folderName || ''}\n`;
+                    config += `LAST_BACKUP=${this.data.settings.backup.lastBackupTime || 'никогда'}\n\n`;
+                }
+
+                // Plants Section
+                config += '# =============================================================================\n';
+                config += '#                                РАСТЕНИЯ\n';
+                config += '# =============================================================================\n\n';
+
+                plants.forEach((plant, index) => {
+                    const currentPhase = this.getCurrentLightPhase(plant.id, new Date());
+                    const daysSince = this.getDaysSincePlanting(plant.id, new Date());
+                    const needsWatering = this.needsWatering(plant.id);
+                    const daysSinceWatering = this.getDaysSinceLastWatering(plant.id);
+                    
+                    config += `# --- РАСТЕНИЕ ${index + 1}: ${plant.name.toUpperCase()} ---\n`;
+                    config += `PLANT_${index + 1}_ID=${plant.id}\n`;
+                    config += `PLANT_${index + 1}_NAME=${plant.name}\n`;
+                    config += `PLANT_${index + 1}_STRAIN=${plant.strain || ''}\n`;
+                    config += `PLANT_${index + 1}_SPECIES=${plant.species || ''}\n`;
+                    config += `PLANT_${index + 1}_SUBSTRATE=${plant.substrate || ''}\n`;
+                    config += `PLANT_${index + 1}_PLANT_DATE=${plant.plantDate}\n`;
+                    config += `PLANT_${index + 1}_LIGHT_ON=${plant.lightOnTime || '08:00'}\n`;
+                    config += `PLANT_${index + 1}_DAY_SINCE_PLANTING=${daysSince}\n`;
+                    config += `PLANT_${index + 1}_CURRENT_PHASE=${currentPhase ? currentPhase.type : 'unknown'}\n`;
+                    config += `PLANT_${index + 1}_PHASE_NAME=${currentPhase ? this.getPhaseDisplayName(currentPhase.type) : 'Неизвестно'}\n`;
+                    config += `PLANT_${index + 1}_NEEDS_WATERING=${needsWatering}\n`;
+                    config += `PLANT_${index + 1}_DAYS_SINCE_WATERING=${daysSinceWatering}\n`;
+                    config += `PLANT_${index + 1}_IS_ACTIVE=${this.isPlantActive(plant)}\n`;
+                    
+                    // Growth phases
+                    if (plant.growthPhases) {
+                        config += `PLANT_${index + 1}_USE_DATES=${plant.growthPhases.useDates || false}\n`;
+                        if (plant.growthPhases.useDates) {
+                            config += `PLANT_${index + 1}_VEG_START=${plant.growthPhases.vegStartDate || ''}\n`;
+                            config += `PLANT_${index + 1}_VEG_END=${plant.growthPhases.vegEndDate || ''}\n`;
+                            config += `PLANT_${index + 1}_FLOWER_START=${plant.growthPhases.flowerStartDate || ''}\n`;
+                            config += `PLANT_${index + 1}_FLOWER_END=${plant.growthPhases.flowerEndDate || ''}\n`;
+                            config += `PLANT_${index + 1}_DRY_START=${plant.growthPhases.dryStartDate || ''}\n`;
+                            config += `PLANT_${index + 1}_DRY_END=${plant.growthPhases.dryEndDate || ''}\n`;
+                        } else {
+                            config += `PLANT_${index + 1}_VEG_DURATION=${plant.growthPhases.vegetation || 28}\n`;
+                            config += `PLANT_${index + 1}_FLOWER_DURATION=${plant.growthPhases.flowering || 63}\n`;
+                            config += `PLANT_${index + 1}_DRY_DURATION=${plant.growthPhases.drying || 10}\n`;
+                        }
+                    }
+                    
+                    config += '\n';
+                });
+
+                // Fertilizers Section
+                config += '# =============================================================================\n';
+                config += '#                               УДОБРЕНИЯ\n';
+                config += '# =============================================================================\n\n';
+
+                fertilizers.forEach((fertilizer, index) => {
+                    config += `# --- УДОБРЕНИЕ ${index + 1}: ${fertilizer.name.toUpperCase()} ---\n`;
+                    config += `FERTILIZER_${index + 1}_ID=${fertilizer.id}\n`;
+                    config += `FERTILIZER_${index + 1}_NAME=${fertilizer.name}\n`;
+                    config += `FERTILIZER_${index + 1}_NPK_N=${fertilizer.npk.n}\n`;
+                    config += `FERTILIZER_${index + 1}_NPK_P=${fertilizer.npk.p}\n`;
+                    config += `FERTILIZER_${index + 1}_NPK_K=${fertilizer.npk.k}\n`;
+                    config += `FERTILIZER_${index + 1}_DENSITY=${fertilizer.density}\n`;
+                    config += `FERTILIZER_${index + 1}_MICRO=${fertilizer.microElements || ''}\n`;
+                    config += `FERTILIZER_${index + 1}_HAS_IMAGE=${fertilizer.image ? 'true' : 'false'}\n\n`;
+                });
+
+                // Recipes Section
+                config += '# =============================================================================\n';
+                config += '#                               РЕЦЕПТЫ\n';
+                config += '# =============================================================================\n\n';
+
+                recipes.forEach((recipe, index) => {
+                    const npkTotals = this.calculateRecipeNPK(recipe);
+                    
+                    config += `# --- РЕЦЕПТ ${index + 1}: ${recipe.name.toUpperCase()} ---\n`;
+                    config += `RECIPE_${index + 1}_ID=${recipe.id}\n`;
+                    config += `RECIPE_${index + 1}_NAME=${recipe.name}\n`;
+                    config += `RECIPE_${index + 1}_VOLUME=${recipe.volume}\n`;
+                    config += `RECIPE_${index + 1}_FERTILIZERS_COUNT=${recipe.fertilizers.length}\n`;
+                    config += `RECIPE_${index + 1}_TOTAL_N=${npkTotals.n.toFixed(1)}\n`;
+                    config += `RECIPE_${index + 1}_TOTAL_P=${npkTotals.p.toFixed(1)}\n`;
+                    config += `RECIPE_${index + 1}_TOTAL_K=${npkTotals.k.toFixed(1)}\n`;
+                    
+                    // List fertilizers in recipe
+                    recipe.fertilizers.forEach((fert, fertIndex) => {
+                        const fertilizer = this.data.fertilizers[fert.fertilizerId];
+                        if (fertilizer) {
+                            config += `RECIPE_${index + 1}_FERT_${fertIndex + 1}=${fertilizer.name} (${fert.dose}мл/л)\n`;
+                        }
+                    });
+                    config += '\n';
+                });
+
+                // Statistics Section
+                config += '# =============================================================================\n';
+                config += '#                              СТАТИСТИКА\n';
+                config += '# =============================================================================\n\n';
+
+                const totalWaterings = Object.keys(this.data.wateringHistory || {}).length;
+                const totalVolume = Object.values(this.data.wateringHistory || {}).reduce((sum, w) => sum + w.volume, 0);
+                const activePlants = plants.filter(plant => this.isPlantActive(plant)).length;
+                const plantsNeedingWater = plants.filter(plant => this.needsWatering(plant.id)).length;
+
+                config += `TOTAL_PLANTS=${plants.length}\n`;
+                config += `ACTIVE_PLANTS=${activePlants}\n`;
+                config += `PLANTS_NEEDING_WATER=${plantsNeedingWater}\n`;
+                config += `TOTAL_WATERINGS=${totalWaterings}\n`;
+                config += `TOTAL_WATER_USED=${totalVolume.toFixed(1)}L\n`;
+                config += `AVERAGE_WATERING=${totalWaterings > 0 ? (totalVolume / totalWaterings).toFixed(1) : '0'}L\n`;
+                config += `DATA_SIZE_KB=${Math.round(JSON.stringify(this.data).length / 1024)}\n\n`;
+
+                // Recent Activity
+                const recentWaterings = Object.values(this.data.wateringHistory || {})
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))
+                    .slice(0, 5);
+
+                if (recentWaterings.length > 0) {
+                    config += '# --- ПОСЛЕДНИЕ ПОЛИВЫ ---\n';
+                    recentWaterings.forEach((watering, index) => {
+                        const date = new Date(watering.date).toLocaleDateString('ru-RU');
+                        const time = new Date(watering.date).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+                        const plantsNames = watering.plantIds.map(id => this.data.plants[id]?.name || 'Удаленное растение').join(', ');
+                        const recipe = watering.recipeId ? this.data.recipes[watering.recipeId] : null;
+                        
+                        config += `RECENT_${index + 1}=${date} ${time} | ${plantsNames} | ${watering.volume}л`;
+                        if (recipe) {
+                            config += ` + ${recipe.name}`;
+                        }
+                        if (watering.notes) {
+                            config += ` | ${watering.notes}`;
+                        }
+                        config += '\n';
+                    });
+                    config += '\n';
+                }
+
+                // Full JSON backup at the end
+                config += '# =============================================================================\n';
+                config += '#                          ПОЛНЫЙ JSON БЭКАП\n';
+                config += '#                     (Для восстановления данных)\n';
+                config += '# =============================================================================\n\n';
+                config += '# JSON_DATA_START\n';
+                config += JSON.stringify(this.data, null, 2);
+                config += '\n# JSON_DATA_END\n';
+
+                return config;
+            }
 
             async backupToFolder() {
                 if (!('showDirectoryPicker' in window)) {
@@ -5378,9 +5586,182 @@ ${this.shouldShowFeedingReminder(date, plant, phase) ? '🌿 Рекоменду�
                 }
             }
 
+            async restoreFromConfigFile() {
+                try {
+                    this.showNotification('⏳ Загрузка config.txt с сервера...', 'info');
 
+                    // Try to load config.txt from server first
+                    const response = await fetch('/api/get-config', {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    });
 
+                    let content = '';
+                    let source = 'сервера';
+                    let lastModified = new Date();
 
+                    if (response.ok) {
+                        const result = await response.json();
+                        content = result.content;
+                        lastModified = new Date(result.timestamp || result.lastModified);
+                    } else {
+                        // Fallback to localStorage
+                        content = localStorage.getItem('plant-care-config-backup');
+                        const backupTime = localStorage.getItem('plant-care-config-backup-time');
+                        
+                        if (!content) {
+                            throw new Error('Config.txt не найден ни на сервере, ни в локальном хранилище');
+                        }
+                        
+                        source = 'локального хранилища';
+                        lastModified = backupTime ? new Date(backupTime) : new Date();
+                    }
+
+                    // Extract JSON data from config file
+                    const jsonStartMarker = '# JSON_DATA_START';
+                    const jsonEndMarker = '# JSON_DATA_END';
+                    
+                    const startIndex = content.indexOf(jsonStartMarker);
+                    const endIndex = content.indexOf(jsonEndMarker);
+                    
+                    if (startIndex === -1 || endIndex === -1) {
+                        throw new Error('Config.txt не содержит данных для восстановления');
+                    }
+
+                    // Extract JSON content
+                    const jsonContent = content.substring(startIndex + jsonStartMarker.length, endIndex).trim();
+                    const importedData = JSON.parse(jsonContent);
+
+                    // Validate data structure
+                    if (!importedData.plants || !importedData.settings) {
+                        throw new Error('Неверный формат данных в config.txt');
+                    }
+
+                    const plantsCount = Object.keys(importedData.plants).length;
+                    const wateringsCount = Object.keys(importedData.wateringHistory || {}).length;
+                    const configSize = Math.round(content.length / 1024);
+                    
+                    const confirmMessage = `Восстановить данные из config.txt?\n\n` +
+                        `📁 Источник: ${source}\n` +
+                        `📅 Размер: ${configSize}КБ\n` +
+                        `📅 Последнее изменение: ${lastModified.toLocaleString('ru-RU')}\n\n` +
+                        `📊 Содержимое:\n` +
+                        `• Растений: ${plantsCount}\n` +
+                        `• Записей поливов: ${wateringsCount}\n` +
+                        `• Удобрений: ${Object.keys(importedData.fertilizers || {}).length}\n` +
+                        `• Рецептов: ${Object.keys(importedData.recipes || {}).length}\n\n` +
+                        `⚠️ Текущие данные будут заменены!`;
+
+                    if (confirm(confirmMessage)) {
+                        // Preserve current settings if not in import
+                        if (this.data.settings.appTitle && !importedData.settings.appTitle) {
+                            importedData.settings.appTitle = this.data.settings.appTitle;
+                        }
+                        if (this.data.settings.homeAssistant && !importedData.settings.homeAssistant) {
+                            importedData.settings.homeAssistant = this.data.settings.homeAssistant;
+                        }
+                        if (this.data.settings.backup && !importedData.settings.backup) {
+                            importedData.settings.backup = this.data.settings.backup;
+                        }
+
+                        this.data = importedData;
+                        this.data.settings.currentDate = new Date(this.data.settings.currentDate || new Date());
+                        this.saveData();
+
+                        // Reinitialize
+                        this.initializePlantPhases();
+                        this.renderUI();
+
+                        this.showNotification(`✅ Данные восстановлены из ${source}`, 'success');
+                    }
+
+                } catch (error) {
+                    console.error('Error restoring from config:', error);
+                    this.showNotification(`❌ Ошибка восстановления: ${error.message}`, 'error');
+                    
+                    // Offer file picker as last resort
+                    if (confirm('Не удалось загрузить config.txt с сервера.\n\nХотите выбрать файл config.txt с компьютера?')) {
+                        this.restoreFromLocalConfigFile();
+                    }
+                }
+            }
+
+            async restoreFromLocalConfigFile() {
+                if (!('showOpenFilePicker' in window)) {
+                    alert('❌ Ваш браузер не поддерживает выбор файлов.\n\nИспользуйте Chrome/Edge 86+ или другой современный браузер.');
+                    return;
+                }
+
+                try {
+                    // Ask user to select config.txt file
+                    const [fileHandle] = await window.showOpenFilePicker({
+                        types: [{
+                            description: 'Конфигурационные файлы',
+                            accept: {
+                                'text/plain': ['.txt', '.config']
+                            }
+                        }],
+                        multiple: false
+                    });
+
+                    const file = await fileHandle.getFile();
+                    const content = await file.text();
+
+                    // Extract JSON data from config file
+                    const jsonStartMarker = '# JSON_DATA_START';
+                    const jsonEndMarker = '# JSON_DATA_END';
+                    
+                    const startIndex = content.indexOf(jsonStartMarker);
+                    const endIndex = content.indexOf(jsonEndMarker);
+                    
+                    if (startIndex === -1 || endIndex === -1) {
+                        throw new Error('Файл config.txt не содержит данных для восстановления');
+                    }
+
+                    // Extract JSON content
+                    const jsonContent = content.substring(startIndex + jsonStartMarker.length, endIndex).trim();
+                    const importedData = JSON.parse(jsonContent);
+
+                    // Validate data structure
+                    if (!importedData.plants || !importedData.settings) {
+                        throw new Error('Неверный формат данных в config.txt');
+                    }
+
+                    const plantsCount = Object.keys(importedData.plants).length;
+                    const wateringsCount = Object.keys(importedData.wateringHistory || {}).length;
+                    
+                    const confirmMessage = `Восстановить данные из локального файла?\n\n` +
+                        `📁 Файл: ${file.name}\n` +
+                        `📅 Размер: ${Math.round(file.size / 1024)}КБ\n` +
+                        `📅 Изменен: ${new Date(file.lastModified).toLocaleString('ru-RU')}\n\n` +
+                        `📊 Содержимое:\n` +
+                        `• Растений: ${plantsCount}\n` +
+                        `• Записей поливов: ${wateringsCount}\n` +
+                        `• Удобрений: ${Object.keys(importedData.fertilizers || {}).length}\n` +
+                        `• Рецептов: ${Object.keys(importedData.recipes || {}).length}\n\n` +
+                        `⚠️ Текущие данные будут заменены!`;
+
+                    if (confirm(confirmMessage)) {
+                        this.data = importedData;
+                        this.data.settings.currentDate = new Date(this.data.settings.currentDate || new Date());
+                        this.saveData();
+
+                        // Reinitialize
+                        this.initializePlantPhases();
+                        this.renderUI();
+
+                        this.showNotification('✅ Данные восстановлены из локального файла', 'success');
+                    }
+
+                } catch (error) {
+                    if (error.name !== 'AbortError') {
+                        console.error('Error restoring from local config:', error);
+                        this.showNotification(`❌ Ошибка восстановления: ${error.message}`, 'error');
+                    }
+                }
+            }
 
             async restoreFromFolder() {
                 if (!('showDirectoryPicker' in window)) {
@@ -6141,15 +6522,6 @@ ${this.shouldShowFeedingReminder(date, plant, phase) ? '🌿 Рекоменду�
                 }
             }
 
-            toggleAutoBackupTime(enabled) {
-                const timeInput = document.getElementById('auto-backup-time');
-                if (enabled) {
-                    timeInput.classList.remove('hidden');
-                } else {
-                    timeInput.classList.add('hidden');
-                }
-            }
-
             async sendTelegramMessage(message) {
                 const telegramSettings = this.data.settings.telegram;
                 
@@ -6526,73 +6898,6 @@ ${this.shouldShowFeedingReminder(date, plant, phase) ? '🌿 Рекоменду�
                 }, 60000); // Check every minute
             }
 
-            async sendBackupToTelegram() {
-                const telegramSettings = this.data.settings.telegram;
-                
-                if (!telegramSettings.enabled || !telegramSettings.botToken || !telegramSettings.chatId) {
-                    this.showTelegramStatus('error', '⚠️ Настройте Telegram интеграцию');
-                    return;
-                }
-
-                this.showTelegramStatus('loading', '📤 Подготовка и отправка бэкапа...');
-
-                try {
-                    // Create backup JSON
-                    const backupData = JSON.stringify(this.data, null, 2);
-                    const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
-                    const filename = `plant-care-backup-${timestamp}.json`;
-                    
-                    // Create file blob
-                    const blob = new Blob([backupData], { type: 'application/json' });
-                    
-                    // Prepare form data for file upload
-                    const formData = new FormData();
-                    formData.append('chat_id', telegramSettings.chatId);
-                    formData.append('document', blob, filename);
-                    
-                    // Add caption with backup info
-                    const plants = Object.values(this.data.plants);
-                    const waterings = Object.values(this.data.wateringHistory);
-                    const dataSize = Math.round(backupData.length / 1024);
-                    
-                    const caption = `📁 <b>Бэкап Plant Care Pro</b>\n\n` +
-                        `📅 Дата: ${new Date().toLocaleDateString('ru-RU', { 
-                            day: '2-digit', 
-                            month: '2-digit', 
-                            year: 'numeric',
-                            hour: '2-digit',
-                            minute: '2-digit'
-                        })}\n` +
-                        `📊 Содержимое:\n` +
-                        `• Растений: ${plants.length}\n` +
-                        `• Записей поливов: ${waterings.length}\n` +
-                        `• Удобрений: ${Object.keys(this.data.fertilizers).length}\n` +
-                        `• Рецептов: ${Object.keys(this.data.recipes).length}\n` +
-                        `📦 Размер: ${dataSize} КБ\n\n` +
-                        `💾 Сохраните этот файл для восстановления данных`;
-                    
-                    formData.append('caption', caption);
-                    formData.append('parse_mode', 'HTML');
-
-                    // Send file to Telegram
-                    const response = await fetch(`https://api.telegram.org/bot${telegramSettings.botToken}/sendDocument`, {
-                        method: 'POST',
-                        body: formData
-                    });
-
-                    if (response.ok) {
-                        this.showTelegramStatus('success', '✅ Бэкап успешно отправлен в Telegram!');
-                    } else {
-                        const error = await response.json();
-                        throw new Error(error.description || `HTTP ${response.status}`);
-                    }
-                    
-                } catch (error) {
-                    console.error('Error sending backup to Telegram:', error);
-                    this.showTelegramStatus('error', `❌ Ошибка отправки бэкапа: ${error.message}`);
-                }
-            }
-
             exportData() {
                 const dataStr = JSON.stringify(this.data, null, 2);
                 const dataBlob = new Blob([dataStr], { type: 'application/json' });
@@ -6872,5 +7177,7 @@ ${this.shouldShowFeedingReminder(date, plant, phase) ? '🌿 Рекоменду�
         // Initialize app
         window.app = new PlantCareApp();
     </script>
+        </div>
+    </div>
 </body>
 </html>
