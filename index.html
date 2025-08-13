@@ -27,7 +27,13 @@
         <!-- Header -->
         <header class="bg-dark border-b border-gray-700 px-6 py-4 flex items-center justify-between flex-shrink-0">
             <h1 class="text-xl font-bold text-primary">Plant Care Pro</h1>
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2">
+                <a href="https://github.com/h47e/plant-care-pro" target="_blank" rel="noopener noreferrer" 
+                   class="p-2 hover:bg-gray-700 rounded-lg transition-colors" title="GitHub проект">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
+                    </svg>
+                </a>
                 <button id="settings-btn" class="p-2 hover:bg-gray-700 rounded-lg transition-colors" title="Настройки">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -936,10 +942,11 @@
                     <div class="space-y-4">
                         <h3 class="text-lg font-semibold text-primary border-b border-gray-600 pb-2">💾 Управление данными</h3>
                         
-                        <!-- Export Options -->
+                        <!-- Data Management -->
                         <div class="bg-gray-800 p-4 rounded-lg">
-                            <h4 class="font-medium text-white mb-3">📤 Экспорт и бэкап</h4>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                            <h4 class="font-medium text-white mb-3">💾 Экспорт и импорт данных</h4>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <button type="button" id="export-data-btn" class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-left">
                                     <div class="flex items-center gap-3 mb-1">
                                         <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -950,62 +957,6 @@
                                     <div class="text-xs text-gray-400">Скачать JSON файл</div>
                                 </button>
 
-                                <button type="button" id="backup-to-folder-btn" class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-left">
-                                    <div class="flex items-center gap-3 mb-1">
-                                        <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-5L12 5H5a2 2 0 00-2 2z"></path>
-                                        </svg>
-                                        <span class="font-medium text-sm">Бэкап в папку</span>
-                                    </div>
-                                    <div class="text-xs text-gray-400">Сохранить в локальную папку</div>
-                                </button>
-                            </div>
-
-                            <!-- Auto-backup Settings -->
-                            <div class="border-t border-gray-600 pt-4">
-                                <div class="flex items-center justify-between mb-3">
-                                    <label class="flex items-center gap-2 cursor-pointer">
-                                        <input type="checkbox" id="settings-auto-backup" class="w-4 h-4 text-primary bg-gray-700 border-gray-600 rounded focus:ring-primary focus:ring-2">
-                                        <span class="text-sm font-medium">Автоматический бэкап</span>
-                                    </label>
-                                </div>
-
-                                <div id="auto-backup-settings" class="hidden space-y-3">
-                                    <div class="grid grid-cols-2 gap-3">
-                                        <div>
-                                            <label class="block text-xs text-gray-400 mb-1">Частота</label>
-                                            <select id="settings-backup-frequency" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
-                                                <option value="daily">Ежедневно</option>
-                                                <option value="weekly">Еженедельно</option>
-                                                <option value="monthly">Ежемесячно</option>
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <label class="block text-xs text-gray-400 mb-1">Макс. файлов</label>
-                                            <input type="number" id="settings-backup-keep" min="1" max="50" value="10" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label class="block text-xs text-gray-400 mb-1">Папка для бэкапов</label>
-                                        <div class="flex gap-2">
-                                            <input type="text" id="settings-backup-folder" readonly class="flex-1 bg-gray-600 text-gray-300 p-2 rounded text-sm" placeholder="Папка не выбрана">
-                                            <button type="button" id="select-backup-folder" class="px-3 py-2 bg-primary text-darker rounded text-sm hover:bg-opacity-90">
-                                                Выбрать
-                                            </button>
-                                        </div>
-                                        <div class="text-xs text-gray-500 mt-1">
-                                            Последний бэкап: <span id="last-backup-time">никогда</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Import Options -->
-                        <div class="bg-gray-800 p-4 rounded-lg">
-                            <h4 class="font-medium text-white mb-3">📥 Импорт данных</h4>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <button type="button" id="import-data-btn" class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-left">
                                     <div class="flex items-center gap-3 mb-1">
                                         <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1014,16 +965,6 @@
                                         <span class="font-medium text-sm">Импорт из файла</span>
                                     </div>
                                     <div class="text-xs text-gray-400">Загрузить JSON файл</div>
-                                </button>
-
-                                <button type="button" id="restore-from-folder-btn" class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-left">
-                                    <div class="flex items-center gap-3 mb-1">
-                                        <svg class="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                                        </svg>
-                                        <span class="font-medium text-sm">Восстановить из папки</span>
-                                    </div>
-                                    <div class="text-xs text-gray-400">Выбрать бэкап из папки</div>
                                 </button>
                             </div>
                         </div>
@@ -1061,6 +1002,19 @@
                                 <div>
                                     <div class="text-gray-400">Размер данных</div>
                                     <div class="font-medium" id="stats-data-size">0 КБ</div>
+                                </div>
+                            </div>
+                            
+                            <div class="border-t border-gray-600 mt-4 pt-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="text-sm text-gray-400">Исходный код проекта</div>
+                                    <a href="https://github.com/h47e/plant-care-pro" target="_blank" rel="noopener noreferrer" 
+                                       class="flex items-center gap-2 px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-sm text-primary">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
+                                        </svg>
+                                        GitHub
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -1732,7 +1686,6 @@
                 document.getElementById('send-backup-telegram').addEventListener('click', () => this.sendBackupToTelegram());
 
                 document.getElementById('export-data-btn').addEventListener('click', () => this.exportData());
-                document.getElementById('backup-to-folder-btn').addEventListener('click', () => this.backupToFolder());
                 document.getElementById('import-data-btn').addEventListener('click', () => this.importData());
                 
                 // Add config.txt handlers with delay to ensure elements exist
@@ -1747,10 +1700,7 @@
                         restoreFromConfigBtn.addEventListener('click', () => this.restoreFromConfigFile());
                     }
                 }, 100);
-                document.getElementById('restore-from-folder-btn').addEventListener('click', () => this.restoreFromFolder());
                 document.getElementById('data-import-input').addEventListener('change', (e) => this.handleDataImport(e));
-                document.getElementById('settings-auto-backup').addEventListener('change', (e) => this.toggleAutoBackupSettings(e.target.checked));
-                document.getElementById('select-backup-folder').addEventListener('click', () => this.selectBackupFolder());
 
                 // Mobile menu management
                 document.getElementById('mobile-menu-btn').addEventListener('click', () => this.toggleMobileMenu());
@@ -5073,25 +5023,8 @@ ${this.shouldShowFeedingReminder(date, plant, phase) ? '🌿 Рекоменду�
                 this.toggleDailySummaryTime(notifications.dailySummary || false);
                 this.toggleTelegramBackupSettings(telegramSettings.autoBackup || false);
 
-                // Backup settings
+                // Backup settings (removed from UI but keep data compatibility)
                 const backupSettings = this.data.settings.backup || {};
-                document.getElementById('settings-auto-backup').checked = backupSettings.autoEnabled || false;
-                document.getElementById('settings-backup-frequency').value = backupSettings.frequency || 'weekly';
-                document.getElementById('settings-backup-keep').value = backupSettings.keepFiles || 10;
-                
-                // Show backup folder if set
-                if (backupSettings.folderName) {
-                    document.getElementById('settings-backup-folder').value = backupSettings.folderName;
-                }
-                
-                // Show last backup time
-                if (backupSettings.lastBackupTime) {
-                    const lastBackup = new Date(backupSettings.lastBackupTime);
-                    document.getElementById('last-backup-time').textContent = lastBackup.toLocaleString('ru-RU');
-                }
-                
-                // Show/hide auto backup settings
-                this.toggleAutoBackupSettings(backupSettings.autoEnabled || false);
                 
                 // Update stats
                 this.updateSettingsStats();
@@ -5231,22 +5164,9 @@ ${this.shouldShowFeedingReminder(date, plant, phase) ? '🌿 Рекоменду�
                     lastBackupTime: this.data.settings.telegram?.lastBackupTime || null
                 };
 
-                // Save backup settings
-                this.data.settings.backup = {
-                    ...this.data.settings.backup,
-                    autoEnabled: document.getElementById('settings-auto-backup').checked,
-                    frequency: document.getElementById('settings-backup-frequency').value,
-                    keepFiles: parseInt(document.getElementById('settings-backup-keep').value) || 10
-                };
-                
                 this.saveData();
                 this.hideSettingsModal();
                 this.updateAppTitle();
-                
-                // Setup auto backup if enabled
-                if (this.data.settings.backup.autoEnabled) {
-                    this.setupAutoBackup();
-                }
                 
 
                 
