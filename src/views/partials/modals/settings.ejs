@@ -1,0 +1,311 @@
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-dark p-6 rounded-lg w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                <span data-translate="Настройки">Настройки</span>
+            </h2>
+            <form id="settings-form">
+                <div class="space-y-6">
+                    <!-- General Settings -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-primary border-b border-gray-600 pb-2">🎨 Общие настройки</h3>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Название приложения</label>
+                            <input id="settings-app-title" type="text" class="w-full bg-gray-700 text-white p-3 rounded-lg" placeholder="Plant Care Pro" required>
+                            <div class="text-xs text-gray-400 mt-1">
+                                Это название будет отображаться в заголовке приложения
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Home Assistant Integration -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-primary border-b border-gray-600 pb-2">🏠 Интеграция с Home Assistant</h3>
+                        
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input id="settings-ha-enabled" type="checkbox" class="w-5 h-5 text-primary bg-gray-700 border-gray-600 rounded focus:ring-primary focus:ring-2">
+                                <div>
+                                    <div class="font-medium">Включить интеграцию с Home Assistant</div>
+                                    <div class="text-sm text-gray-400">Синхронизация данных о растениях с системой умного дома</div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div id="ha-settings-content" class="space-y-4 hidden">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">URL Home Assistant</label>
+                                <input id="settings-ha-url" type="url" class="w-full bg-gray-700 text-white p-3 rounded-lg" placeholder="http://homeassistant.local:8123">
+                                <div class="text-xs text-gray-400 mt-1">
+                                    Адрес вашего Home Assistant (например: http://192.168.1.100:8123)
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Токен доступа</label>
+                                <input id="settings-ha-token" type="password" class="w-full bg-gray-700 text-white p-3 rounded-lg" placeholder="Долгосрочный токен доступа">
+                                <div class="text-xs text-gray-400 mt-1">
+                                    Создайте токен в Профиле → Токены безопасности в Home Assistant
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Префикс сущностей</label>
+                                <input id="settings-ha-prefix" type="text" class="w-full bg-gray-700 text-white p-3 rounded-lg" placeholder="plant_care" value="plant_care">
+                                <div class="text-xs text-gray-400 mt-1">
+                                    Префикс для создаваемых сущностей (например: sensor.plant_care_plant1_phase)
+                                </div>
+                            </div>
+
+                            <div class="bg-blue-600/10 border border-blue-600/30 p-4 rounded-lg">
+                                <h4 class="font-medium text-blue-400 mb-2">📊 Создаваемые сущности:</h4>
+                                <ul class="text-sm text-gray-300 space-y-1">
+                                    <li>• <code>sensor.{prefix}_{plant}_phase</code> - текущая фаза роста</li>
+                                    <li>• <code>sensor.{prefix}_{plant}_day</code> - день с посадки</li>
+                                    <li>• <code>sensor.{prefix}_{plant}_light_schedule</code> - расписание света</li>
+                                    <li>• <code>binary_sensor.{prefix}_{plant}_needs_watering</code> - требуется полив</li>
+                                    <li>• <code>sensor.{prefix}_total_plants</code> - общее количество растений</li>
+                                </ul>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <button type="button" id="test-ha-connection" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors text-sm font-medium">
+                                    🔗 Проверить соединение
+                                </button>
+                                <button type="button" id="sync-ha-entities" class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg transition-colors text-sm font-medium">
+                                    🔄 Синхронизировать сущности
+                                </button>
+                            </div>
+
+                            <div id="ha-connection-status" class="hidden p-3 rounded-lg text-sm">
+                                <!-- Connection status will be shown here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Telegram Integration -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-primary border-b border-gray-600 pb-2">📱 Интеграция с Telegram</h3>
+                        
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input id="settings-telegram-enabled" type="checkbox" class="w-5 h-5 text-primary bg-gray-700 border-gray-600 rounded focus:ring-primary focus:ring-2">
+                                <div>
+                                    <div class="font-medium">Включить уведомления в Telegram</div>
+                                    <div class="text-sm text-gray-400">Получение уведомлений о поливе и статусе растений</div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div id="telegram-settings-content" class="space-y-4 hidden">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Токен бота</label>
+                                <input id="settings-telegram-token" type="password" class="w-full bg-gray-700 text-white p-3 rounded-lg" placeholder="1234567890:AABBCCDDEEFFGGHHIIJJKKLLMMNNOOPPQQRr">
+                                <div class="text-xs text-gray-400 mt-1">
+                                    Создайте бота через @BotFather и скопируйте токен
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Chat ID</label>
+                                <div class="flex gap-2">
+                                    <input id="settings-telegram-chat-id" type="text" class="flex-1 bg-gray-700 text-white p-3 rounded-lg" placeholder="123456789">
+                                    <button type="button" id="get-telegram-chat-id" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors text-sm font-medium">
+                                        Получить ID
+                                    </button>
+                                </div>
+                                <div class="text-xs text-gray-400 mt-1">
+                                    Отправьте команду /start боту, затем нажмите "Получить ID"
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <h4 class="font-medium text-white mb-3">🔔 Настройки уведомлений</h4>
+                                <div class="space-y-3">
+                                    <label class="flex items-center gap-3 cursor-pointer">
+                                        <input id="settings-telegram-watering-reminders" type="checkbox" class="w-4 h-4 text-primary bg-gray-700 border-gray-600 rounded focus:ring-primary focus:ring-2" checked>
+                                        <div>
+                                            <div class="text-sm font-medium">Напоминания о поливе</div>
+                                            <div class="text-xs text-gray-400">Уведомления когда растения нуждаются в поливе</div>
+                                        </div>
+                                    </label>
+
+                                    <label class="flex items-center gap-3 cursor-pointer">
+                                        <input id="settings-telegram-phase-changes" type="checkbox" class="w-4 h-4 text-primary bg-gray-700 border-gray-600 rounded focus:ring-primary focus:ring-2" checked>
+                                        <div>
+                                            <div class="text-sm font-medium">Смена фаз роста</div>
+                                            <div class="text-xs text-gray-400">Уведомления о переходе растений между фазами</div>
+                                        </div>
+                                    </label>
+
+                                    <div class="border-t border-gray-600 pt-3">
+                                        <label class="flex items-center gap-3 cursor-pointer mb-3">
+                                            <input id="settings-telegram-daily-summary" type="checkbox" class="w-4 h-4 text-primary bg-gray-700 border-gray-600 rounded focus:ring-primary focus:ring-2">
+                                            <div>
+                                                <div class="text-sm font-medium">Ежедневная сводка</div>
+                                                <div class="text-xs text-gray-400">Ежедневный отчет о состоянии растений</div>
+                                            </div>
+                                        </label>
+
+                                        <div id="daily-summary-time" class="ml-7 hidden">
+                                            <label class="block text-xs text-gray-400 mb-1">Время отправки сводки</label>
+                                            <input id="settings-telegram-daily-time" type="time" value="09:00" class="bg-gray-700 text-white p-2 rounded text-sm">
+                                        </div>
+                                    </div>
+
+                                    <div class="border-t border-gray-600 pt-3">
+                                        <label class="flex items-center gap-3 cursor-pointer mb-3">
+                                            <input id="settings-telegram-auto-backup" type="checkbox" class="w-4 h-4 text-primary bg-gray-700 border-gray-600 rounded focus:ring-primary focus:ring-2">
+                                            <div>
+                                                <div class="text-sm font-medium">Автоматический бэкап</div>
+                                                <div class="text-xs text-gray-400">Регулярная отправка бэкапа данных в чат</div>
+                                            </div>
+                                        </label>
+
+                                        <div id="telegram-backup-settings" class="ml-7 hidden space-y-3">
+                                            <div class="grid grid-cols-2 gap-3">
+                                                <div>
+                                                    <label class="block text-xs text-gray-400 mb-1">Частота</label>
+                                                    <select id="settings-telegram-backup-frequency" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
+                                                        <option value="daily">Ежедневно</option>
+                                                        <option value="weekly" selected>Еженедельно</option>
+                                                        <option value="monthly">Ежемесячно</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-xs text-gray-400 mb-1">Время</label>
+                                                    <input id="settings-telegram-backup-time" type="time" value="20:00" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
+                                                </div>
+                                            </div>
+                                            <div class="text-xs text-gray-500">
+                                                Последний бэкап в Telegram: <span id="last-telegram-backup-time">никогда</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-3">
+                                <button type="button" id="test-telegram-connection" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors text-sm font-medium">
+                                    🧪 Тестовое сообщение
+                                </button>
+                                <button type="button" id="send-plant-status" class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg transition-colors text-sm font-medium">
+                                    📊 Отправить статус растений
+                                </button>
+                                <button type="button" id="send-backup-telegram" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors text-sm font-medium">
+                                    💾 Отправить бэкап
+                                </button>
+                            </div>
+
+                            <div id="telegram-connection-status" class="hidden p-3 rounded-lg text-sm">
+                                <!-- Connection status will be shown here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data Management -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-primary border-b border-gray-600 pb-2">💾 Управление данными</h3>
+                        
+                        <!-- Data Management -->
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="font-medium text-white mb-3">💾 Экспорт и импорт данных</h4>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <button type="button" id="export-data-btn" class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-left">
+                                    <div class="flex items-center gap-3 mb-1">
+                                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                        </svg>
+                                        <span class="font-medium text-sm">Экспорт файла</span>
+                                    </div>
+                                    <div class="text-xs text-gray-400">Скачать JSON файл</div>
+                                </button>
+
+                                <button type="button" id="import-data-btn" class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-left">
+                                    <div class="flex items-center gap-3 mb-1">
+                                        <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                        </svg>
+                                        <span class="font-medium text-sm">Импорт из файла</span>
+                                    </div>
+                                    <div class="text-xs text-gray-400">Загрузить JSON файл</div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-yellow-600/10 border border-yellow-600/30 p-4 rounded-lg">
+                            <div class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-yellow-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                                </svg>
+                                <div>
+                                    <div class="font-medium text-yellow-400 mb-1">Резервное копирование</div>
+                                    <div class="text-sm text-gray-300">Регулярно экспортируйте данные для создания резервных копий. Основное хранилище — IndexedDB в браузере, LocalStorage используется как аварийный fallback.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- About -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-primary border-b border-gray-600 pb-2">ℹ️ О приложении</h3>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <div class="text-gray-400">Версия</div>
+                                    <div class="font-medium">1.0.0 Final</div>
+                                </div>
+                                <div>
+                                    <div class="text-gray-400">Данных растений</div>
+                                    <div class="font-medium" id="stats-plants-count">0</div>
+                                </div>
+                                <div>
+                                    <div class="text-gray-400">Записей поливов</div>
+                                    <div class="font-medium" id="stats-waterings-count">0</div>
+                                </div>
+                                <div>
+                                    <div class="text-gray-400">Размер данных</div>
+                                    <div class="font-medium" id="stats-data-size">0 КБ</div>
+                                </div>
+                                <div>
+                                    <div class="text-gray-400">Хранилище</div>
+                                    <div class="font-medium" id="stats-storage-engine">IndexedDB</div>
+                                </div>
+                                <div>
+                                    <div class="text-gray-400">Последнее сохранение</div>
+                                    <div class="font-medium" id="stats-last-save">-</div>
+                                </div>
+                            </div>
+                            
+                            <div class="border-t border-gray-600 mt-4 pt-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="text-sm text-gray-400">Исходный код проекта</div>
+                                    <a href="https://github.com/h47e/plant-care-pro" target="_blank" rel="noopener noreferrer" 
+                                       class="flex items-center gap-2 px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-sm text-primary">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/>
+                                        </svg>
+                                        GitHub
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 mt-6">
+                    <button type="button" id="settings-cancel-btn" class="flex-1 bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-600">
+                        <span data-translate="Отмена">Отмена</span>
+                    </button>
+                    <button type="submit" class="flex-1 bg-primary text-darker px-4 py-2 rounded-lg hover:bg-opacity-90 font-medium">
+                        <span data-translate="Сохранить настройки">Сохранить настройки</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>

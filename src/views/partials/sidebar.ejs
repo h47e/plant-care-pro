@@ -1,0 +1,45 @@
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-40 w-80 bg-dark border-r border-gray-700 flex flex-col overflow-y-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+            <!-- My Plants Section -->
+            <div class="p-4 border-b border-gray-700">
+                <div class="flex items-center gap-2 text-primary mb-4">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                    </svg>
+                    <h2 class="font-semibold">Мои растения</h2>
+                </div>
+                
+                <button id="add-plant-btn" class="w-full bg-primary text-darker px-4 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-colors flex items-center justify-center gap-2 mb-4">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    Добавить растение
+                </button>
+
+                <!-- Plants List -->
+                <div id="plants-list" class="space-y-3">
+                    <!-- Plant cards will be rendered here -->
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="p-4 border-b border-gray-700">
+                <h3 class="text-white font-semibold mb-3" data-translate="Быстрые действия">Быстрые действия</h3>
+                <div class="space-y-2">
+                    <button id="quick-water-btn" class="w-full flex items-center gap-3 p-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors text-left">
+                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                        </svg>
+                        <span data-translate="Полив сейчас">Полив сейчас</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Today Events -->
+            <div class="p-4">
+                <h3 class="text-white font-semibold mb-3" data-translate="События сегодня">События сегодня</h3>
+                <div id="sidebar-today-events" class="space-y-2">
+                    <!-- Today's events will be rendered here -->
+                </div>
+            </div>
+        </aside>

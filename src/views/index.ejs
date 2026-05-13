@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<%- include('partials/head') %>
+<body class="bg-darker text-white font-['Inter'] h-screen overflow-hidden">
+    <div class="flex flex-col h-full max-w-7xl mx-auto w-full">
+<%- include('partials/header') %>
+<%- include('partials/mobile-menu') %>
+
+        <div class="flex flex-1 overflow-hidden w-full">
+<%- include('partials/sidebar') %>
+<%- include('partials/main-content') %>
+        </div>
+
+    <!-- Modals -->
+<%- include('partials/modals/plant') %>
+<%- include('partials/modals/fertilizer') %>
+<%- include('partials/modals/recipe') %>
+<%- include('partials/modals/watering') %>
+<%- include('partials/modals/settings') %>
+<%- include('partials/data-import') %>
+
+        <script type="module" src="/js/app.js"></script>
+    </div>
+</body>
+</html>
