@@ -1,0 +1,13 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Plant Care Pro logo</title>
+  <desc id="desc">A friendly plant pot with two leaves and a care clock in forest green.</desc>
+  <rect width="512" height="512" rx="112" fill="#E8F4EA"/>
+  <path d="M160 252H328L312 378C309.526 397.443 292.986 412 273.386 412H214.614C195.014 412 178.474 397.443 176 378L160 252Z" fill="white" stroke="#1E6B3B" stroke-width="24" stroke-linejoin="round"/>
+  <path d="M177 252H311" stroke="#5CB26E" stroke-width="18" stroke-linecap="round"/>
+  <path d="M244 250C244 186 203 144 144 132C143 190 184 236 244 250Z" fill="white" stroke="#1E6B3B" stroke-width="22" stroke-linejoin="round"/>
+  <path d="M244 250C249 177 299 117 378 94C385 171 329 237 244 250Z" fill="white" stroke="#1E6B3B" stroke-width="22" stroke-linejoin="round"/>
+  <path d="M244 250C238 218 218 180 168 151" stroke="#5CB26E" stroke-width="16" stroke-linecap="round"/>
+  <path d="M244 250C268 209 304 161 360 115" stroke="#5CB26E" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="329" cy="361" r="62" fill="#F3F4F6" stroke="#1E6B3B" stroke-width="22"/>
+  <path d="M329 326V363L357 380" stroke="#1F2933" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

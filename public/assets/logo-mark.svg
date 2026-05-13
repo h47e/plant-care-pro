@@ -1,0 +1,13 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Plant Care Pro mark</title>
+  <desc id="desc">Compact plant pot and clock mark.</desc>
+  <rect width="128" height="128" rx="30" fill="#E8F4EA"/>
+  <path d="M39 63H83L79 96C78.3 101.1 74 105 68.8 105H53.2C48 105 43.7 101.1 43 96L39 63Z" fill="white" stroke="#1E6B3B" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M44 63H79" stroke="#5CB26E" stroke-width="5" stroke-linecap="round"/>
+  <path d="M61 62C61 45 50 35 35 32C35 48 46 59 61 62Z" fill="white" stroke="#1E6B3B" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M61 62C63 43 76 29 96 23C98 43 84 59 61 62Z" fill="white" stroke="#1E6B3B" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M61 62C59 54 54 45 40 36" stroke="#5CB26E" stroke-width="4" stroke-linecap="round"/>
+  <path d="M61 62C68 50 78 38 91 27" stroke="#5CB26E" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="83" cy="91" r="17" fill="#F3F4F6" stroke="#1E6B3B" stroke-width="6"/>
+  <path d="M83 82V92L91 97" stroke="#1F2933" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
