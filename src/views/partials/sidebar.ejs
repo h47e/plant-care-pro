@@ -6,14 +6,14 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
                     </svg>
-                    <h2 class="font-semibold">Мои растения</h2>
+                    <div><h2 class="font-bold text-lg">Оранжерея</h2><p class="text-xs text-gray-400">карточки растений и задачи</p></div>
                 </div>
                 
                 <button id="add-plant-btn" class="w-full bg-primary text-darker px-4 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-colors flex items-center justify-center gap-2 mb-4">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                     </svg>
-                    Добавить растение
+                    ＋ Новое растение
                 </button>
 
                 <!-- Plants List -->
@@ -24,7 +24,7 @@
 
             <!-- Quick Actions -->
             <div class="p-4 border-b border-gray-700">
-                <h3 class="text-white font-semibold mb-3" data-translate="Быстрые действия">Быстрые действия</h3>
+                <h3 class="text-white font-bold mb-3 uppercase tracking-[0.2em] text-xs" data-translate="Быстрые действия">Быстрые действия</h3>
                 <div class="space-y-2">
                     <button id="quick-water-btn" class="w-full flex items-center gap-3 p-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors text-left">
                         <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,7 +37,7 @@
 
             <!-- Today Events -->
             <div class="p-4">
-                <h3 class="text-white font-semibold mb-3" data-translate="События сегодня">События сегодня</h3>
+                <h3 class="text-white font-bold mb-3 uppercase tracking-[0.2em] text-xs" data-translate="События сегодня">События сегодня</h3>
                 <div id="sidebar-today-events" class="space-y-2">
                     <!-- Today's events will be rendered here -->
                 </div>
