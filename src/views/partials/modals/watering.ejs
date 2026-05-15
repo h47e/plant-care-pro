@@ -1,0 +1,78 @@
+    <!-- Watering Modal -->
+    <div id="watering-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-dark p-6 rounded-lg w-full max-w-2xl mx-4 max-h-[85vh] overflow-y-auto">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                💧 <span>Полив растений</span>
+            </h2>
+            <form id="watering-form">
+                <div class="space-y-6">
+                    <!-- Basic Info -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Дата полива</label>
+                            <input id="watering-date" type="datetime-local" class="w-full bg-gray-700 text-white p-3 rounded-lg" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Объем воды (л)</label>
+                            <input id="watering-volume" type="number" step="0.1" value="5" min="0.1" class="w-full bg-gray-700 text-white p-3 rounded-lg" required>
+                        </div>
+                    </div>
+
+                    <!-- Plant Selection -->
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Растения для полива</label>
+                        <div id="watering-plants" class="space-y-2 max-h-40 overflow-y-auto">
+                            <!-- Plant checkboxes will be rendered here -->
+                        </div>
+                    </div>
+
+                    <!-- Recipe Selection -->
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Рецепт питания</label>
+                        <div class="flex gap-2">
+                            <select id="watering-recipe" class="flex-1 bg-gray-700 text-white p-3 rounded-lg" onchange="app.updateWateringCalculation()">
+                                <option value="">Только вода</option>
+                            </select>
+                            <button type="button" id="auto-recipe-btn" class="px-4 py-2 bg-primary text-darker rounded-lg hover:bg-opacity-90 text-sm font-medium">
+                                Авто-выбор
+                            </button>
+                        </div>
+                        <div class="text-xs text-gray-400 mt-1">
+                            Авто-выбор подберет подходящий рецепт на основе фазы роста выбранных растений
+                        </div>
+                    </div>
+
+                    <!-- Fertilizer Calculation -->
+                    <div id="watering-calculation" class="bg-gray-800 p-4 rounded-lg">
+                        <h3 class="font-semibold mb-3">Расчет удобрений</h3>
+                        <div id="fertilizer-amounts" class="space-y-2">
+                            <!-- Calculated fertilizer amounts will be shown here -->
+                        </div>
+                        <div id="nutrient-totals" class="mt-4 pt-3 border-t border-gray-600">
+                            <div class="text-sm text-gray-300">
+                                <strong>Концентрация питательных веществ:</strong>
+                            </div>
+                            <div id="nutrient-values" class="grid grid-cols-3 gap-4 mt-2 text-sm">
+                                <!-- N-P-K values will be shown here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notes -->
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Заметки (необязательно)</label>
+                        <textarea id="watering-notes" class="w-full bg-gray-700 text-white p-3 rounded-lg h-20" placeholder="Дополнительные заметки о поливе..."></textarea>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 mt-6">
+                    <button type="button" id="watering-cancel-btn" class="flex-1 bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-600">
+                        Отмена
+                    </button>
+                    <button type="submit" class="flex-1 bg-primary text-darker px-4 py-2 rounded-lg hover:bg-opacity-90 font-medium">
+                        Выполнить полив
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,271 @@
+    <!-- Plant Modal -->
+    <div id="plant-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-dark p-6 rounded-lg w-full max-w-4xl mx-4 max-h-[90vh] overflow-y-auto">
+            <h2 id="plant-modal-title" class="text-xl font-bold mb-4">Добавить растение</h2>
+            <form id="plant-form">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Basic Info -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-semibold text-primary mb-3">Основная информация</h3>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Название</label>
+                            <input id="plant-name" type="text" class="w-full bg-gray-700 text-white p-3 rounded-lg" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Дата посадки</label>
+                            <input id="plant-date" type="date" class="w-full bg-gray-700 text-white p-3 rounded-lg" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Сорт</label>
+                            <input id="plant-strain" type="text" class="w-full bg-gray-700 text-white p-3 rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Вид растения</label>
+                            <select id="plant-species" name="plant-species" class="w-full bg-gray-700 text-white p-3 rounded-lg">
+                                <option value="">🌱 Выберите вид</option>
+                                <option value="cannabis-indica">🌿 Cannabis Indica</option>
+                                <option value="cannabis-sativa">🌲 Cannabis Sativa</option>
+                                <option value="cannabis-hybrid">🌳 Cannabis Hybrid (Гибрид)</option>
+                                <option value="cannabis-ruderalis">🌾 Cannabis Ruderalis (Автоцвет)</option>
+                                <option value="tomato">🍅 Томат</option>
+                                <option value="pepper">🌶️ Перец</option>
+                                <option value="cucumber">🥒 Огурец</option>
+                                <option value="lettuce">🥬 Салат</option>
+                                <option value="basil">🌿 Базилик</option>
+                                <option value="mint">🌿 Мята</option>
+                                <option value="parsley">🌿 Петрушка</option>
+                                <option value="cilantro">🌿 Кинза</option>
+                                <option value="spinach">🥬 Шпинат</option>
+                                <option value="other">❓ Другое</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Субстрат выращивания</label>
+                            <select id="plant-substrate" class="w-full bg-gray-700 text-white p-3 rounded-lg">
+                                <option value="">🌱 Выберите субстрат</option>
+                                <option value="soil-organic">🌍 Почва (органическая)</option>
+                                <option value="soil-commercial">🏪 Почва (коммерческая)</option>
+                                <option value="coco-coir">🥥 Кокосовое волокно</option>
+                                <option value="perlite-vermiculite">⚪ Перлит + Вермикулит</option>
+                                <option value="hydroponic-clay">🔵 Гидропоника (керамзит)</option>
+                                <option value="hydroponic-rockwool">🧽 Гидропоника (минвата)</option>
+                                <option value="hydroponic-dwc">💧 Гидропоника (DWC)</option>
+                                <option value="hydroponic-nft">🌊 Гидропоника (NFT)</option>
+                                <option value="aeroponic">💨 Аэропоника</option>
+                                <option value="soilless-mix">🌿 Беспочвенная смесь</option>
+                                <option value="peat-moss">🍄 Торфяной мох</option>
+                                <option value="other">❓ Другое</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Время включения света (по умолчанию)</label>
+                            <input id="plant-light-on" type="time" class="w-full bg-gray-700 text-white p-3 rounded-lg" value="08:00">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Фото растения</label>
+                            
+                            <!-- Tab buttons for upload method -->
+                            <div class="flex gap-2 mb-3">
+                                <button type="button" id="plant-upload-file-btn" class="px-3 py-1 bg-primary text-darker rounded text-sm font-medium">
+                                    Файл
+                                </button>
+                                <button type="button" id="plant-upload-url-btn" class="px-3 py-1 bg-gray-700 text-white rounded text-sm">
+                                    Ссылка
+                                </button>
+                            </div>
+                            
+                            <!-- File upload -->
+                            <div id="plant-file-upload" class="flex flex-col gap-3">
+                                <input id="plant-image" type="file" accept="image/*" class="w-full bg-gray-700 text-white p-3 rounded-lg file:mr-3 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-medium file:bg-primary file:text-darker hover:file:bg-opacity-90">
+                                <div class="text-xs text-gray-400">
+                                    Поддерживаются форматы: JPG, PNG, WEBP. Максимальный размер: 5MB
+                                </div>
+                            </div>
+                            
+                            <!-- URL upload -->
+                            <div id="plant-url-upload" class="hidden flex flex-col gap-3">
+                                <input id="plant-image-url" type="url" class="w-full bg-gray-700 text-white p-3 rounded-lg" placeholder="https://example.com/image.jpg">
+                                <button type="button" id="load-plant-image-url" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors text-sm font-medium">
+                                    Загрузить по ссылке
+                                </button>
+                                <div class="text-xs text-gray-400">
+                                    Введите прямую ссылку на изображение (JPG, PNG, WEBP)
+                                </div>
+                            </div>
+                            
+                            <!-- Image preview -->
+                            <div id="plant-image-preview" class="hidden mt-3">
+                                <img id="plant-preview-img" src="" alt="Предпросмотр" class="w-full h-32 object-cover rounded-lg">
+                                <button type="button" id="remove-plant-image" class="mt-2 text-red-400 hover:text-red-300 text-sm">
+                                    Удалить изображение
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Growth Phases Configuration -->
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-lg font-semibold text-primary">Настройка фаз роста</h3>
+                            <div class="flex gap-2">
+                                <button type="button" id="date-mode-btn" class="px-3 py-1 bg-primary text-darker rounded text-sm font-medium">
+                                    По датам
+                                </button>
+                                <button type="button" id="duration-mode-btn" class="px-3 py-1 bg-gray-700 text-white rounded text-sm">
+                                    По длительности
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Date Mode -->
+                        <div id="date-mode-config" class="space-y-4">
+                            <!-- Vegetation Phase -->
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-green-400 text-lg">🌱</span>
+                                    <h4 class="font-medium text-green-400">Вегетация (18/6)</h4>
+                                </div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-xs text-gray-400 mb-1">Дата начала</label>
+                                        <input id="veg-start-date" type="date" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-gray-400 mb-1">Дата окончания</label>
+                                        <input id="veg-end-date" type="date" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
+                                    </div>
+                                </div>
+                                <div class="mt-2 text-xs text-gray-500">
+                                    <span id="veg-duration-display">Длительность: 0 дней</span>
+                                </div>
+                            </div>
+
+                            <!-- Flowering Phase -->
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-purple-400 text-lg">🌸</span>
+                                    <h4 class="font-medium text-purple-400">Цветение (12/12)</h4>
+                                </div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-xs text-gray-400 mb-1">Дата начала</label>
+                                        <input id="flower-start-date" type="date" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-gray-400 mb-1">Дата окончания</label>
+                                        <input id="flower-end-date" type="date" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
+                                    </div>
+                                </div>
+                                <div class="mt-2 text-xs text-gray-500">
+                                    <span id="flower-duration-display">Длительность: 0 дней</span>
+                                </div>
+                            </div>
+
+                            <!-- Drying Phase -->
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-orange-400 text-lg">🍂</span>
+                                    <h4 class="font-medium text-orange-400">Сушка (0/24)</h4>
+                                </div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-xs text-gray-400 mb-1">Дата начала</label>
+                                        <input id="dry-start-date" type="date" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-gray-400 mb-1">Дата окончания</label>
+                                        <input id="dry-end-date" type="date" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
+                                    </div>
+                                </div>
+                                <div class="mt-2 text-xs text-gray-500">
+                                    <span id="dry-duration-display">Длительность: 0 дней</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Duration Mode -->
+                        <div id="duration-mode-config" class="space-y-4 hidden">
+                            <!-- Vegetation Phase -->
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-green-400 text-lg">🌱</span>
+                                    <h4 class="font-medium text-green-400">Вегетация (18/6)</h4>
+                                </div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-xs text-gray-400 mb-1">Планируемая длительность (дни)</label>
+                                        <input id="veg-duration" type="number" min="14" max="70" value="28" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-gray-400 mb-1">Рекомендуемо: 21-42 дня</label>
+                                        <div class="text-xs text-gray-500 mt-1">Оптимально: 28 дней</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Flowering Phase -->
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-purple-400 text-lg">🌸</span>
+                                    <h4 class="font-medium text-purple-400">Цветение (12/12)</h4>
+                                </div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-xs text-gray-400 mb-1">Планируемая длительность (дни)</label>
+                                        <input id="flower-duration" type="number" min="35" max="91" value="63" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-gray-400 mb-1">Рекомендуемо: 49-77 дней</label>
+                                        <div class="text-xs text-gray-500 mt-1">Оптимально: 63 дня</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Drying Phase -->
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-orange-400 text-lg">🍂</span>
+                                    <h4 class="font-medium text-orange-400">Сушка (0/24)</h4>
+                                </div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="block text-xs text-gray-400 mb-1">Планируемая длительность (дни)</label>
+                                        <input id="dry-duration" type="number" min="3" max="21" value="10" class="w-full bg-gray-700 text-white p-2 rounded text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-gray-400 mb-1">Рекомендуемо: 5-14 дней</label>
+                                        <div class="text-xs text-gray-500 mt-1">Оптимально: 10 дней</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Growth Cycle Forecast -->
+                <div class="mt-6 bg-gray-800 p-4 rounded-lg">
+                    <h3 class="text-lg font-semibold text-primary mb-4">Прогноз цикла роста</h3>
+                    <div id="growth-forecast" class="space-y-3">
+                        <!-- Growth timeline will be rendered here -->
+                    </div>
+                    <div class="mt-4 p-3 bg-gray-700 rounded">
+                        <div class="text-sm text-gray-300">
+                            <strong>Общая длительность цикла:</strong> <span id="total-cycle-days">101</span> дней (~<span id="total-cycle-weeks">14.4</span> недель)
+                        </div>
+                        <div class="text-sm text-gray-400 mt-1">
+                            <strong>Ожидаемая дата харвеста:</strong> <span id="estimated-harvest-date">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 mt-6">
+                    <button type="button" id="plant-cancel-btn" class="flex-1 bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-600">
+                        Отмена
+                    </button>
+                    <button type="submit" class="flex-1 bg-primary text-darker px-4 py-2 rounded-lg hover:bg-opacity-90">
+                        Сохранить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>

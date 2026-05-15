@@ -1,0 +1,145 @@
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col overflow-hidden lg:ml-0">
+            <!-- Navigation Tabs -->
+            <div class="bg-dark border-b border-gray-700 px-6 py-4">
+                <nav class="flex gap-4">
+                    <button id="tab-dashboard" class="tab-btn flex items-center justify-center w-12 h-10 bg-primary text-darker rounded-lg font-medium" title="Дашборд">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </button>
+                    <button id="tab-fertilizers" class="tab-btn flex items-center justify-center w-12 h-10 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors" title="Удобрения">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 7.172V5L8 4z"></path>
+                        </svg>
+                    </button>
+                    <button id="tab-recipes" class="tab-btn flex items-center justify-center w-12 h-10 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors" title="Рецепты">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </button>
+                    <button id="tab-history" class="tab-btn flex items-center justify-center w-12 h-10 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors" title="История">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Content Area -->
+            <div class="flex-1 overflow-y-auto bg-darker">
+                <!-- Dashboard Tab -->
+                <div id="content-dashboard" class="tab-content p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-4">
+                            <h1 class="text-2xl font-bold">📊 Календарь растения</h1>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <button id="prev-month-btn" class="p-2 hover:bg-gray-700 rounded-lg transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </button>
+                            <h3 id="current-month" class="text-lg font-medium min-w-32 text-center">Август 2025</h3>
+                            <button id="next-month-btn" class="p-2 hover:bg-gray-700 rounded-lg transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <button id="today-btn" class="px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-sm">
+                                Сегодня
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Plant Calendars Container -->
+                    <div id="plant-calendars-container" class="space-y-8 max-w-6xl mx-auto">
+                        <!-- Individual plant calendars will be rendered here -->
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="no-plants-message" class="hidden text-center py-16 text-gray-400">
+                        <svg class="w-20 h-20 mx-auto mb-6 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-2">Нет активных растений</h3>
+                        <p class="text-gray-500 mb-6">Добавьте растения чтобы увидеть их календари планирования</p>
+                        <button onclick="app.showPlantModal()" class="bg-primary text-darker px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-colors">
+                            Добавить первое растение
+                        </button>
+                    </div>
+                </div>
+
+
+
+                <!-- Fertilizers Tab -->
+                <div id="content-fertilizers" class="tab-content hidden p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h1 class="text-2xl font-bold">🧪 Каталог удобрений</h1>
+                        <button id="add-fertilizer-btn" class="bg-primary text-darker px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-colors">
+                            Добавить удобрение
+                        </button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="fertilizers-grid">
+                        <!-- Fertilizers will be rendered here -->
+                    </div>
+                </div>
+
+                <!-- Recipes Tab -->
+                <div id="content-recipes" class="tab-content hidden p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h1 class="text-2xl font-bold">🌿 Рецепты полива</h1>
+                        <button id="add-recipe-btn" class="bg-primary text-darker px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-colors">
+                            Создать рецепт
+                        </button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="recipes-list">
+                        <!-- Recipes will be rendered here -->
+                    </div>
+                </div>
+
+                <!-- History Tab -->
+                <div id="content-history" class="tab-content hidden p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h1 class="text-2xl font-bold">📜 История поливов</h1>
+                        <div class="flex items-center gap-4">
+                            <select id="history-plant-filter" class="bg-gray-700 text-white px-3 py-2 rounded-lg text-sm">
+                                <option value="">Все растения</option>
+                            </select>
+                            <select id="history-period-filter" class="bg-gray-700 text-white px-3 py-2 rounded-lg text-sm">
+                                <option value="7">Последние 7 дней</option>
+                                <option value="30">Последние 30 дней</option>
+                                <option value="90">Последние 3 месяца</option>
+                                <option value="all">Все записи</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Statistics -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-sm font-semibold text-gray-400 mb-1">Всего поливов</h3>
+                            <div class="text-2xl font-bold text-blue-400" id="total-waterings">0</div>
+                        </div>
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-sm font-semibold text-gray-400 mb-1">Общий объем</h3>
+                            <div class="text-2xl font-bold text-cyan-400" id="total-volume">0л</div>
+                        </div>
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-sm font-semibold text-gray-400 mb-1">Средний объем</h3>
+                            <div class="text-2xl font-bold text-green-400" id="average-volume">0л</div>
+                        </div>
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-sm font-semibold text-gray-400 mb-1">Популярный рецепт</h3>
+                            <div class="text-sm font-bold text-purple-400" id="popular-recipe">-</div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4" id="watering-history-list">
+                        <!-- Watering history will be rendered here -->
+                    </div>
+                </div>
+            </div>
+        </main>

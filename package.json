@@ -1,0 +1,21 @@
+{
+  "name": "plant-care-pro",
+  "version": "1.1.0",
+  "description": "Plant care manager with plants, watering, fertilizers, recipes and local browser database storage.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check public/js/app.js"
+  },
+  "keywords": [
+    "plants",
+    "watering",
+    "fertilizers",
+    "recipes",
+    "indexeddb"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
